@@ -1,0 +1,84 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather Forecast</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="vue">
+        <div class="header">
+            <div id="displayinline">
+                <img id="logo" src="img/icon.png">
+                <div>
+                    <h1>APOSI WEATHER</h1>
+                    <h2>THE WEATHER NETWORK</h2>
+                </div>
+            </div>
+            <div>
+                <input id="searchInput" type="text" placeholder="Search.." v-model="search">
+            </div>
+        </div>
+        <div class="mainPart">
+            <div class="displayFlex">
+
+                <div v-for="(city, index) in weatherFinder" class="flexBox">
+                    <div v-if="city.weather[0].description == 'light rain'" :class="lightRain">
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+
+                    <div v-if="city.weather[0].description == 'broken clouds' || city.weather[0].description == 'few clouds'" :class="brokenClouds">
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+
+                    <div v-if="city.weather[0].description == 'overcast clouds'" :class="overcast">
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+                    <div v-if="city.weather[0].description == 'sunny'" :class="sunny">
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+
+                    <div v-if="city.weather[0].description == 'scattered clouds'" :class="scattered">
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+                    <div v-if="city.weather[0].description == 'sunny day'" :class="sunnyDay">
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+
+
+
+                    <!--
+                    <div v-else>
+                        <p class="cityName">{{city.name}}</p>
+                        <p class="temperature">{{city.main.temp}}&deg;</p>
+                        <p class="weatherDescription">{{city.weather[0].description}}</p>
+                    </div>
+-->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
